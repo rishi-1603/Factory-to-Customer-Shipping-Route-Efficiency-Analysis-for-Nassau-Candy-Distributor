@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Pipeline, tests & dashboard smoke test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run full pipeline (raw -> processed + reports)
+        run: |
+          python scripts/01_clean_data.py
+          python scripts/02_analysis_report.py
+
+      - name: Reports must regenerate byte-identical (determinism check)
+        run: git diff --exit-code -- reports/
+
+      - name: Run test suite (23 tests)
+        run: python -m pytest tests/ -v
+
+      - name: Dashboard smoke test (Streamlit AppTest)
+        run: |
+          python - <<'PY'
+          from streamlit.testing.v1 import AppTest
+          at = AppTest.from_file("dashboard/app.py", default_timeout=300)
+          at.run()
+          assert not at.exception, f"Dashboard raised an exception: {at.exception}"
+          text = " ".join(m.value for m in at.markdown)
+          assert "Route Efficiency Intelligence" in text, "header band missing"
+          assert "10,194" in text, "scope chip missing"
+          print("Dashboard rendered end-to-end with no exceptions.")
+          PY

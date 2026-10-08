@@ -1,0 +1,54 @@
+{
+  "project": "Factory-to-Customer Shipping Route Efficiency Analysis — Nassau Candy Distributor",
+  "dataset": {
+    "rows": 10194,
+    "grain": "order line (Row ID)",
+    "source": "Unified Mentor project dataset (Nassau Candy Distributor, synthetic)",
+    "disclosure": "Synthetic dataset supplied with the official project specification."
+  },
+  "metrics": {
+    "Shipping Lead Time": {
+      "definition": "Recovered true lead = (Ship Date − Order Date − 904) mod 365, in days. The raw gap carries a systematic multi-year timestamp defect (documented); the recovery strips it and is validated against ship-mode semantics.",
+      "basis": "per order line"
+    },
+    "Average Lead Time": {
+      "definition": "Mean recovered shipping lead time over the lines in scope (network, route, state, or mode level).",
+      "basis": "scope"
+    },
+    "Route Volume": {
+      "definition": "Number of order lines on the route (Factory → Customer State/Province). Lines, not distinct orders — the grain is order-line.",
+      "basis": "per route"
+    },
+    "Delay Frequency": {
+      "definition": "Share of a scope's lines whose recovered lead time exceeds the delay threshold (default 5 days, adjustable in the dashboard).",
+      "basis": "scope"
+    },
+    "Route Efficiency Score": {
+      "definition": "100 × (1 − (route avg lead − min avg lead) / (max avg lead − min avg lead)), computed over routes with at least 20 lines. Fastest rankable route = 100, slowest = 0. Small-sample routes are listed with raw stats but excluded from scoring.",
+      "basis": "per route"
+    },
+    "Sales / Gross Profit": {
+      "definition": "Line-level Sales and Gross Profit summed over the scope. Gross Profit = Sales − Cost (identity verified on all rows).",
+      "basis": "scope"
+    }
+  },
+  "pinned_numbers": {
+    "total_lines": 10194,
+    "unique_orders": 8549,
+    "customers": 5044,
+    "routes": 196,
+    "rankable_routes": 75,
+    "factories": 5,
+    "state_province_codes": 59,
+    "regions": 4,
+    "ship_modes": 4,
+    "total_sales_usd": 141783.63,
+    "total_gross_profit_usd": 93442.80,
+    "top2_factory_share_pct": 96.6,
+    "avg_lead_days": 4.29,
+    "median_lead_days": 4,
+    "delay_freq_at_5d_pct": 24.7,
+    "raw_gap_range_days": [904, 1642],
+    "lead_distribution": {"0": 350, "1": 375, "2": 1089, "3": 1081, "4": 2328, "5": 2450, "6": 1476, "7": 824, "8": 219, "11": 2}
+  }
+}

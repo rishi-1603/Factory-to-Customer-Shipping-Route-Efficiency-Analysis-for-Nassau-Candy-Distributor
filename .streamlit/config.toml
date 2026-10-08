@@ -1,0 +1,9 @@
+# Dark route-ops console (portfolio-consistent). base=dark makes all native
+# widgets render dark; the app CSS layers the design system on top.
+[theme]
+base = "dark"
+primaryColor = "#388bfd"
+backgroundColor = "#0B1220"
+secondaryBackgroundColor = "#151E31"
+textColor = "#E8ECF4"
+font = "sans serif"
