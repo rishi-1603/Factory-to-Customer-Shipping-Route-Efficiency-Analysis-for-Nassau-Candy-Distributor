@@ -28,7 +28,7 @@ End-to-end route-efficiency intelligence over **10,194 order lines** (5 factorie
 
 ### Three findings that drive the recommendations
 
-1. **Delay is mode-driven, not geography-driven.** Route averages span 3.4–5.0 days; ship modes span 0.4–5.3 days (~2.4× the route spread). Standard Class carries **60.3% of sales** at the slowest average (5.32d) and **38.8% delay frequency**, while Same Day / First Class run at 0%.
+1. **Delay is mode-driven, not geography-driven.** Route averages span 3.4–5.0 days; ship modes span 0.4–5.3 days (~2.9× the route spread). Standard Class carries **60.3% of sales** at the slowest average (5.32d) and **38.8% delay frequency**, while Same Day / First Class run at 0%.
 2. **Mode choice is a service decision, not a margin lever.** Margins are uniform across all four modes (65.7–66.1%).
 3. **Concentration risk: 96.6% of volume on 2 of 5 factories** (Lot's O' Nuts 55.8% + Wicked Choccy's 40.7%). Plus 17 volume-weighted bottleneck states (worst: Minnesota, 4.96d).
 

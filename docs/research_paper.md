@@ -59,7 +59,7 @@ threshold; sales $141,783.63 at 65.9% margin.
 Indiana (5.04 days, 46.3% delay frequency, score 0). Route averages span 3.4-5.0 days — a 1.6-day
 band.
 
-**Modes:** averages span 0.4-5.3 days — **~2.4× the route spread**. Standard Class: 6,120 lines,
+**Modes:** averages span 0.4-5.3 days — **~2.9× the route spread**. Standard Class: 6,120 lines,
 60.3% of sales, 5.32-day average, 38.8% delay frequency. Same Day and First Class: 0% delay
 frequency. Margins uniform (65.7-66.1%).
 

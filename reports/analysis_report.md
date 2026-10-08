@@ -42,7 +42,7 @@ Nassau Candy Distributor · 10,194 order lines · 196 routes · all lead-time fi
 
 ## 3. The dominant finding: mode choice, not geography
 
-- Route averages span a narrow band (3.4-5.0 days among rankable routes); ship-mode averages span 0.4-5.3 days — **mode spread is ~2.4× the route spread**
+- Route averages span a narrow band (3.4-5.0 days among rankable routes); ship-mode averages span 0.4-5.3 days — **mode spread is ~2.9× the route spread**
 - Standard Class carries **60.3% of sales** at the slowest average lead (5.32 days) and the highest delay frequency (38.8% at 5d)
 - Profit margins are uniform across modes (65.7-66.1%) — mode choice is a service-level decision, not a margin lever
 

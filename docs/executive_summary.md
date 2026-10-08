@@ -35,7 +35,7 @@ audit. **Recommendation: fix the source date pipeline.**
 | Second Class | 3.57d | 1,979 | 19.6% | 7.5% |
 | **Standard Class** | **5.32d** | **6,120** | **60.3%** | **38.8%** |
 
-Mode averages span **0.4-5.3 days — ~2.4× the route spread**. Standard Class carries 60% of sales
+Mode averages span **0.4-5.3 days — ~2.9× the route spread**. Standard Class carries 60% of sales
 at the slowest speed; fast options already exist in-network. Margins are uniform (65.7-66.1%),
 so mode selection is a service-level decision, not a margin lever.
 

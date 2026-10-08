@@ -65,7 +65,7 @@ def main() -> None:
         "## 3. The dominant finding: mode choice, not geography",
         "",
         f"- Route averages span a narrow band (3.4-5.0 days among rankable routes); ship-mode averages span "
-        f"0.4-5.3 days — **{ 'mode spread is ~2.4× the route spread' }**",
+        f"0.4-5.3 days — **{ 'mode spread is ~2.9× the route spread' }**",
         f"- Standard Class carries **{modes.loc[modes[C.COL_SHIP_MODE] == 'Standard Class', 'sales_share_pct'].iloc[0]}% "
         f"of sales** at the slowest average lead "
         f"({modes.loc[modes[C.COL_SHIP_MODE] == 'Standard Class', 'avg_lead_days'].iloc[0]} days) and the highest "
