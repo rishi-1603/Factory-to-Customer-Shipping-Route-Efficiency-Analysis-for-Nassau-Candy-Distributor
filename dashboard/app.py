@@ -114,8 +114,8 @@ section[data-testid="stSidebar"] * {{ font-size: 13px; }}
   font-size: 0.92rem; font-weight: 800; color: var(--z-text);
   border-left: 3px solid var(--z-primary); padding-left: 10px; margin: 16px 0 8px;
 }}
-.chart-card {{ background: var(--z-card); border: 1px solid var(--z-border);
-  border-radius: 12px; padding: 14px 16px 6px; margin-bottom: 12px; }}
+[data-testid="stPlotlyChart"] {{ background: var(--z-card); border: 1px solid var(--z-border);
+  border-radius: 12px; margin-bottom: 12px; }}
 .card-heading {{ font-size: 0.86rem; font-weight: 700; color: var(--z-text); margin-bottom: 8px; }}
 .card-sub {{ font-size: 0.73rem; color: var(--z-muted); margin-top: 2px; }}
 .finding {{ background: var(--z-card); border-left: 3px solid {AMBER}; border-radius: 6px;
@@ -376,18 +376,13 @@ with tab1:
     c1, c2 = st.columns(2)
     with c1:
         st.markdown('<div class="section-title">Top 10 most efficient routes</div>', unsafe_allow_html=True)
-        st.markdown('<div class="chart-card">', unsafe_allow_html=True)
         st.dataframe(route_table_md(lb["most_efficient"]), use_container_width=True, hide_index=True)
-        st.markdown('</div>', unsafe_allow_html=True)
     with c2:
         st.markdown('<div class="section-title">Bottom 10 least efficient routes</div>', unsafe_allow_html=True)
-        st.markdown('<div class="chart-card">', unsafe_allow_html=True)
         st.dataframe(route_table_md(lb["least_efficient"]), use_container_width=True, hide_index=True)
-        st.markdown('</div>', unsafe_allow_html=True)
 
     # Lead-time distribution
     st.markdown('<div class="section-title">Lead-time distribution (recovered)</div>', unsafe_allow_html=True)
-    st.markdown('<div class="chart-card">', unsafe_allow_html=True)
     dist = df[C.COL_LEAD].value_counts().sort_index()
     fig = go.Figure(go.Bar(
         x=dist.index, y=dist.values,
@@ -399,7 +394,6 @@ with tab1:
     fig.update_yaxes(title="Order lines")
     st.plotly_chart(style_fig(fig, height=280, legend=False), use_container_width=True,
                     config={"displayModeBar": False})
-    st.markdown('</div>', unsafe_allow_html=True)
 
     # Key findings
     st.markdown('<div class="section-title">Key operational findings</div>', unsafe_allow_html=True)
@@ -430,8 +424,6 @@ with tab2:
     # US choropleth (Canadian provinces are table-only — documented)
     sp_us = sp[sp[C.COL_STATE].isin(STATE_TO_CODE)].copy()
     sp_us["code"] = sp_us[C.COL_STATE].map(STATE_TO_CODE)
-
-    st.markdown('<div class="chart-card">', unsafe_allow_html=True)
     st.markdown('<div class="card-heading">US heatmap — average recovered lead time by state</div>', unsafe_allow_html=True)
     fig = go.Figure(go.Choropleth(
         locations=sp_us["code"], z=sp_us["avg_lead_days"],
@@ -468,7 +460,6 @@ with tab2:
     ({len(sp) - len(sp_us)} in the data) are covered in the tables below — the spec's heatmap targets US states.
 </div>
 """, unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
 
     bott, med = kpis.detect_bottlenecks(sp)
     c1, c2 = st.columns(2)
@@ -476,7 +467,6 @@ with tab2:
         st.markdown('<div class="section-title">Geographic bottlenecks</div>', unsafe_allow_html=True)
         st.caption(f"High volume (≥50 lines) AND above-median average lead (median {med:.2f}d) — "
                    "congestion-prone states, ranked worst first.")
-        st.markdown('<div class="chart-card">', unsafe_allow_html=True)
         styler = (
             bott.head(12)[[C.COL_STATE, "volume", "avg_lead_days", "delay_freq_pct", "factories_served"]]
             .style.format({"volume": "{:,}", "avg_lead_days": "{:.2f}",
@@ -485,7 +475,6 @@ with tab2:
             .hide(axis="index")
         )
         st.dataframe(styler, use_container_width=True, hide_index=True)
-        st.markdown('</div>', unsafe_allow_html=True)
     with c2:
         st.markdown('<div class="section-title">Regions</div>', unsafe_allow_html=True)
         reg = results["regions"]
@@ -517,7 +506,6 @@ with tab3:
 
     c1, c2 = st.columns(2)
     with c1:
-        st.markdown('<div class="chart-card">', unsafe_allow_html=True)
         st.markdown('<div class="card-heading">Average lead time by ship mode</div>', unsafe_allow_html=True)
         fig = px.bar(m, x=C.COL_SHIP_MODE, y="avg_lead_days", color="avg_lead_days",
                      color_continuous_scale=[[0, "#14532D"], [0.5, "#B45309"], [1, "#B91C1C"]],
@@ -526,9 +514,7 @@ with tab3:
         fig.update_yaxes(title="Days")
         st.plotly_chart(style_fig(fig, height=300, legend=False), use_container_width=True,
                         config={"displayModeBar": False})
-        st.markdown('</div>', unsafe_allow_html=True)
     with c2:
-        st.markdown('<div class="chart-card">', unsafe_allow_html=True)
         st.markdown('<div class="card-heading">Volume and sales share by mode</div>', unsafe_allow_html=True)
         fig = go.Figure()
         fig.add_bar(x=m[C.COL_SHIP_MODE], y=m["volume"], name="Lines", marker_color=BLUE, opacity=0.85)
@@ -538,11 +524,9 @@ with tab3:
                           yaxis2=dict(title="Sales share (%)", overlaying="y", side="right", showgrid=False))
         st.plotly_chart(style_fig(fig, height=300), use_container_width=True,
                         config={"displayModeBar": False})
-        st.markdown('</div>', unsafe_allow_html=True)
 
     st.markdown('<div class="section-title">Complete mode comparison (cost-time tradeoff, descriptive)</div>',
                 unsafe_allow_html=True)
-    st.markdown('<div class="chart-card">', unsafe_allow_html=True)
     styler = (
         m.style.format({
             "volume": "{:,}", "avg_lead_days": "{:.2f}", "median_lead_days": "{:.0f}",
@@ -562,7 +546,6 @@ with tab3:
     options at uniform ~66% margins — mode choice is a service-level decision, not a margin lever.
 </div>
 """, unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
 
 # ════════════════════════════════════════════════════════════════════════════
 # MODULE 4 — ROUTE DRILL-DOWN
@@ -584,7 +567,6 @@ with tab4:
 
     c1, c2 = st.columns([1, 1.4])
     with c1:
-        st.markdown('<div class="chart-card">', unsafe_allow_html=True)
         st.markdown('<div class="card-heading">Routes serving this state</div>', unsafe_allow_html=True)
         styler = (
             d["routes"].style.format({
@@ -594,9 +576,7 @@ with tab4:
             .hide(axis="index")
         )
         st.dataframe(styler, use_container_width=True, hide_index=True)
-        st.markdown('</div>', unsafe_allow_html=True)
     with c2:
-        st.markdown('<div class="chart-card">', unsafe_allow_html=True)
         st.markdown('<div class="card-heading">Order-level shipment timeline (50 most recent lines)</div>',
                     unsafe_allow_html=True)
         tl = d["timeline"]
@@ -617,7 +597,6 @@ with tab4:
     marks the delay definition on this module.
 </div>
 """, unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
 
 st.divider()
 app_footer()
