@@ -2,9 +2,18 @@
 
 [![CI](https://github.com/rishi-1603/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/actions/workflows/ci.yml/badge.svg)](https://github.com/rishi-1603/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/actions/workflows/ci.yml)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/tests-23-passing-brightgreen.svg)](#testing--ci)
+[![Tests](https://img.shields.io/badge/tests-29-passing-brightgreen.svg)](#testing--ci)
 
-End-to-end route-efficiency intelligence over **10,194 order lines** (5 factories · 59 US-state & Canadian-province codes · 196 routes · 4 ship modes): a data-quality-first cleaning pipeline, the spec's five KPIs, a 4-module Streamlit dashboard, a SQL layer mirroring every Python calculation, and **23 automated tests that pin every headline number** — including the structure of the timestamp defect this project is built around.
+End-to-end route-efficiency intelligence over **10,194 order lines** (5 factories · 59 US-state & Canadian-province codes · 196 routes · 4 ship modes): a data-quality-first cleaning pipeline, the spec's five KPIs, a 4-module Streamlit dashboard, a SQL layer mirroring every Python calculation, and **29 automated tests that pin every headline number** — including the structure of the timestamp defect this project is built around.
+
+## Public submission materials
+
+- [Browser companion demo](https://rishi-1603.github.io/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/) — interactive client-side view, not a hosted Python/Streamlit server.
+- [Project technical report](https://rishi-1603.github.io/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/project-report.pdf) — unpublished project report; no academic approval or peer review claimed.
+- [Captioned project walkthrough](https://rishi-1603.github.io/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/project-explanation.html) — actual companion-app screen recording, without spoken narration.
+- [Internship reflection draft](https://rishi-1603.github.io/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/internship-reflection.html) — project-based slides for candidate review, not a personal recording or employer testimonial. Confirm the required video format before submission.
+
+The original Streamlit app is retained. Rebuild the privacy-minimized browser data with `python scripts/build_web_data.py` after obtaining the source data. The export and media assets have three additional regression checks, bringing the current test suite to 29 tests. Original documents may retain earlier test-count labels.
 
 ---
 
@@ -53,7 +62,7 @@ pip install -r requirements.txt
 
 python scripts/01_clean_data.py        # raw -> processed + data-quality report
 python scripts/02_analysis_report.py   # deterministic analysis report
-python -m pytest tests/ -v             # 23 tests
+python -m pytest tests/ -v             # 29 tests
 streamlit run dashboard/app.py         # the dashboard
 ```
 
@@ -66,7 +75,7 @@ The 2 MB raw dataset ships in git — no extra downloads.
 ├── scripts/              # 01_clean_data.py · 02_analysis_report.py (deterministic)
 ├── src/                  # config (defect model, factory map) · data_cleaning · kpis · analytics
 ├── sql/                  # schema.sql · kpis.sql · analysis.sql (mirror the Python)
-├── tests/                # 23 tests — defect structure, recovery, every KPI
+├── tests/                # 29 tests — defect structure, recovery, every KPI
 ├── docs/                 # methodology, dictionaries, exec summary, research paper, …
 ├── reports/              # generated reports (CI-verified byte-identical)
 └── data/                 # raw (in git, 2 MB) + processed (generated)
@@ -87,7 +96,7 @@ The 2 MB raw dataset ships in git — no extra downloads.
 
 ## Testing & CI
 
-**23 tests** cover: the defect's presence and band structure, the exact recovered-lead
+**29 tests** cover: the defect's presence and band structure, the exact recovered-lead
 distribution, the ship-mode validation gate (including a sabotage test proving the pipeline fails
 loudly on bad recovery), route/KPI pins (196 routes, best/worst, mode stats, bottlenecks,
 concentration), and an AppTest that renders the dashboard end-to-end.
