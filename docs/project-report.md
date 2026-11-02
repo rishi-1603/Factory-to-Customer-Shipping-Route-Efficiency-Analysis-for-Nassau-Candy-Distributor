@@ -3,7 +3,8 @@
 A synthetic Nassau Candy case study with an explicit timestamp-recovery assumption
 
 **Author:** Dappu Rishi Raghukumar
-**Date:** 2 November 2026
+**Project/reporting date:** 23 September 2026
+**Web edition prepared:** 2 November 2026
 **Status:** Unpublished project technical report; not peer-reviewed or independently approved.
 
 ## Abstract
