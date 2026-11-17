@@ -33,7 +33,7 @@ jobs:
       - name: Reports must regenerate byte-identical (determinism check)
         run: git diff --exit-code -- reports/
 
-      - name: Run test suite (23 tests)
+      - name: Run test suite (29 tests)
         run: python -m pytest tests/ -v
 
       - name: Dashboard smoke test (Streamlit AppTest)

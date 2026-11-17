@@ -21,7 +21,7 @@ geography**. Standard Class carries 60.3% of sales at the slowest average (5.32 
 highest delay frequency (38.8% over 5 days), while margins are uniform across modes (65.7-66.1%) —
 mode selection is a service-level decision. We further identify 17 volume-weighted bottleneck
 states (worst: Minnesota, 4.96 days) and a concentration risk: 96.6% of lines flow through 2 of 5
-factories. All figures are computed from the data and pinned by 23 automated tests.
+factories. All figures are computed from the data and pinned by 29 automated tests.
 
 ## 1. Introduction
 
@@ -95,5 +95,5 @@ is fixed.
 With the defect caught, diagnosed and validated, the analysis delivers the spec's four answers:
 route benchmarks (196 routes, scored), mode tradeoffs (Standard = 60% of sales at the slowest
 speed), bottleneck geography (17 states, volume-weighted), and a concentration warning (96.6% on
-two factories). Every number is reproducible: 23 pinned tests, deterministic CI-verified reports,
+two factories). Every number is reproducible: 29 pinned tests, deterministic CI-verified reports,
 and a SQL layer mirroring the Python.
