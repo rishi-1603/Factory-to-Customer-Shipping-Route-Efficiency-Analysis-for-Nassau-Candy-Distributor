@@ -22,9 +22,8 @@ def test_web_export_excludes_personal_fields():
 
 def test_public_reports_and_media_are_real_files():
     docs=ROOT/'docs'
-    for name in ['index.html','project-explanation.html','internship-reflection.html','assets/app.js','assets/style.css','assets/plotly.min.js','.nojekyll']:
+    for name in ['index.html','project-explanation.html','assets/app.js','assets/style.css','assets/plotly.min.js','.nojekyll']:
         assert (docs/name).is_file()
     assert (docs/'project-report.pdf').read_bytes().startswith(b'%PDF')
-    for name in ['project-walkthrough.mp4','internship-reflection-draft.mp4']:
+    for name in ['project-walkthrough.mp4']:
         assert b'ftyp' in (docs/name).read_bytes()[:32]
-    assert 'draft' in (docs/'internship-reflection.html').read_text().lower()

@@ -11,7 +11,6 @@ End-to-end route-efficiency intelligence over **10,194 order lines** (5 factorie
 - [Browser companion demo](https://rishi-1603.github.io/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/) — interactive client-side view, not a hosted Python/Streamlit server.
 - [Project technical report](https://rishi-1603.github.io/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/project-report.pdf) — unpublished project report; no academic approval or peer review claimed.
 - [Captioned project walkthrough](https://rishi-1603.github.io/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/project-explanation.html) — actual companion-app screen recording, without spoken narration.
-- [Internship reflection draft](https://rishi-1603.github.io/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/internship-reflection.html) — project-based slides for candidate review, not a personal recording or employer testimonial. Confirm the required video format before submission.
 
 The original Streamlit app is retained. Rebuild the privacy-minimized browser data with `python scripts/build_web_data.py` after obtaining the source data. The export and media assets have three additional regression checks, bringing the current test suite to 29 tests. Original documents may retain earlier test-count labels.
 
