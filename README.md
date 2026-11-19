@@ -4,15 +4,17 @@
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/)
 [![Tests](https://img.shields.io/badge/tests-29-passing-brightgreen.svg)](#testing--ci)
 
-End-to-end route-efficiency intelligence over **10,194 order lines** (5 factories · 59 US-state & Canadian-province codes · 196 routes · 4 ship modes): a data-quality-first cleaning pipeline, the spec's five KPIs, a 4-module Streamlit dashboard, a SQL layer mirroring every Python calculation, and **29 automated tests that pin every headline number** — including the structure of the timestamp defect this project is built around.
+Route-efficiency analysis over **10,194 order lines** across 5 factories, 59 US states and Canadian provinces, 196 routes, and 4 shipping modes. The pipeline cleans a hidden timestamp defect in the raw data, computes the spec's five KPIs, and ships a 4-module Streamlit dashboard plus a SQL layer that mirrors every Python calculation. **29 automated tests pin every headline number.**
 
-## Public submission materials
+## Links
 
-- [Browser companion demo](https://rishi-1603.github.io/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/) — interactive client-side view, not a hosted Python/Streamlit server.
-- [Project technical report](https://rishi-1603.github.io/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/project-report.pdf) — unpublished project report; no academic approval or peer review claimed.
-- [Captioned project walkthrough](https://rishi-1603.github.io/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/project-explanation.html) — actual companion-app screen recording, without spoken narration.
+- [Live dashboard](https://rishi-1603.github.io/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/) - runs in the browser, no server needed.
+- [Technical report (PDF)](https://rishi-1603.github.io/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/project-report.pdf)
+- [Project walkthrough video](https://rishi-1603.github.io/Factory-to-Customer-Shipping-Route-Efficiency-Analysis-for-Nassau-Candy-Distributor/project-explanation.html)
 
-The original Streamlit app is retained. Rebuild the privacy-minimized browser data with `python scripts/build_web_data.py` after obtaining the source data. The export and media assets have three additional regression checks, bringing the current test suite to 29 tests. Original documents may retain earlier test-count labels.
+The Streamlit app is in `dashboard/app.py` for local use. Rebuild the browser data with `python scripts/build_web_data.py` after running the cleaning pipeline.
+
+
 
 ---
 
